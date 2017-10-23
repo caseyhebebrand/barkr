@@ -1,32 +1,29 @@
 import React from 'react';
-import { Container, Card, Image, Grid } from 'semantic-ui-react';
+import { Container, Card, Image, Grid, Icon } from 'semantic-ui-react';
+import AdoptionListEntry from './AdoptionListEntry.jsx';
 
 class AdoptionList extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      cards: [{}, {}, {}]
+    }
   }
 
   render() {
     return (
       <Container>
-        <Card color="red" centered>
-          <Card.Content>
-            <Card.Header>Buddy</Card.Header>
-          </Card.Content>
-          <Card.Content centered>
-            <Grid columns="two">
-              <Grid.Row>
-                <Grid.Column>
-                  <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc6B_V6-rZhk9s5wZKx3I2h3ChiEyUydRJiwhP4aYtWmAMKtz_xA"
-                  fluid rounded/>
-                </Grid.Column>
-                <Grid.Column>
-                  <Card.Description floated="right">Buddy is 5 years old.</Card.Description>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Card.Content>
-        </Card>
+        <AdoptionListEntry/>
+        <Grid columns="two" verticalAlign="middle" centered>
+          <Grid.Row>
+            <Grid.Column width={2} textAlign="center">
+              <Icon circular inverted color="red" name="ban" size="big"/>
+            </Grid.Column>
+            <Grid.Column width={2} textAlgin="center">
+              <Icon circular inverted color="red" size="big" name="heart"/>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </Container>
     )
   }
