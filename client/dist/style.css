@@ -1,3 +1,7 @@
+body {
+  background: #FAFAFA;
+}
+
 .ui.container {
     margin: 50px;
 }
@@ -5,4 +9,5 @@
 .ui.centered.card {
   width: 650px;
   height: 330px;
+  background: #f3f3f3;
 }
