@@ -20,12 +20,37 @@ class AdoptionList extends React.Component {
     super(props);
     this.state = {
       cards: [{}, {}, {}],
-      petView: false
+      petView: false,
+      zipCode: null,
+      gender: null,
+      size: null
     }
     this.submitForm = this.submitForm.bind(this);
+    this.getZipCode = this.getZipCode.bind(this);
+    this.getGender = this.getGender.bind(this);
+    this.getSize = this.getSize.bind(this);
   }
 
+  getZipCode(e, data) {
+    this.setState({
+      zipCode: data.value
+    })
+  };
+
+  getGender(e, data) {
+    this.setState({
+      gender: data.value
+    })
+  };
+
+  getSize(e, data) {
+    this.setState({
+      size: data.value
+    })
+  };
+
   submitForm() {
+    console.log(this.state)
     this.setState({
       petView: true
     })
@@ -58,12 +83,12 @@ class AdoptionList extends React.Component {
             <Card.Content>
               <Form size="medium">
                 <Form.Group>
-                  <Form.Input label="Zip Code" placeholder="Zip Code"/>
-                  <Form.Field control={Select} label='Gender' options={genderOptions} placeholder='Gender' />
-                  <Form.Field control={Select} label='Size' options={sizeOptions} placeholder='Size' />
+                  <Form.Input label="Zip Code" placeholder="Zip Code" value={this.state.zipCode} onChange={this.getZipCode}/>
+                  <Form.Field control={Select} label='Gender' options={genderOptions} placeholder='Gender'onChange={this.getGender} />
+                  <Form.Field control={Select} label='Size' options={sizeOptions} placeholder='Size' onChange={this.getSize} />
                 </Form.Group>
-                <Button size="large" color="red" fluid onClick={this.submitForm}>Search</Button>
               </Form>
+              <Button size="large" color="red" fluid onClick={this.submitForm}>Search</Button>
             </Card.Content>
           </Card>
         }
