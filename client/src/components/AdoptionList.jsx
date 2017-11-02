@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Card, Image, Grid, Icon } from 'semantic-ui-react';
 import { Form, Input, Button, Select } from 'semantic-ui-react';
 import AdoptionListEntry from './AdoptionListEntry.jsx';
+import $ from 'jquery';
 
 const genderOptions = [
   { key: 'm', text: 'Male', value: 'M' },
@@ -50,10 +51,25 @@ class AdoptionList extends React.Component {
   };
 
   submitForm() {
-    console.log(this.state)
-    this.setState({
-      petView: true
-    })
+    let body = {
+      zip: this.state.zipCode,
+      gender: this.state.gender,
+      size: this.state.size
+    };
+
+    $.ajax({
+        url : "/search",
+        method: 'POST',
+        data: body,
+        dataType: 'json',
+        success: () => {
+          console.log('SUCCESS')
+        }
+    });
+
+    // this.setState({
+    //   petView: true
+    // })
   }
 
   render() {
