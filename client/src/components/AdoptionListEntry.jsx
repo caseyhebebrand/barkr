@@ -16,13 +16,12 @@ class AdoptionListEntry extends React.Component {
           <Grid columns="two">
             <Grid.Row>
               <Grid.Column>
-                <Image src={this.props.pet.media.photos.photo[3].$t} fluid rounded/>
+                <Image src={this.props.pet.media.photos.photo[3].$t} rounded height='250px'/>
               </Grid.Column>
               <Grid.Column>
                 {Array.isArray(this.props.pet.breeds.breed) ? <Card.Description floated="right">Breed: {this.props.pet.breeds.breed[0].$t}</Card.Description> :
                 <Card.Description floated="right">Breed:  {this.props.pet.breeds.breed.$t}</Card.Description>}
                 <Card.Description floated="right">Age Group:  {this.props.pet.age.$t}</Card.Description>
-                {this.props.pet.description ? <Card.Description floated="right">{this.props.pet.description.$t}</Card.Description> : null}
                 <Card.Description floated="right">{this.props.pet.contact.address1.$t}</Card.Description>
                 <Card.Description floated="right">{this.props.pet.contact.city.$t}</Card.Description>
                 <Card.Description floated="right">{this.props.pet.contact.phone.$t}</Card.Description>
