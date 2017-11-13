@@ -21,6 +21,8 @@ class AdoptionList extends React.Component {
     super(props);
     this.state = {
       cards: [{}, {}, {}],
+      current: null,
+      index: 0,
       petView: false,
       zipCode: null,
       gender: null,
@@ -62,14 +64,26 @@ class AdoptionList extends React.Component {
         method: 'POST',
         data: body,
         dataType: 'json',
-        success: () => {
-          console.log('SUCCESS')
+        success: (data) => {
+          console.log('SUCCESS', data)
+          this.setState({
+            cards: data,
+            current: data[0],
+            index: 0,
+            petView: true
+          })
+          console.log(this.state)
         }
     });
+  }
 
-    // this.setState({
-    //   petView: true
-    // })
+  buttonClick() {
+    let newIndex = this.state.index + 1;
+    this.setState({
+      current: this.state.cards[newIndex],
+      index: newIndex
+    })
+    console.log(this.state)
   }
 
   render() {
@@ -78,14 +92,14 @@ class AdoptionList extends React.Component {
         <Container>
           { this.state.petView ?
             <Container>
-            <AdoptionListEntry/>
+            <AdoptionListEntry pet={this.state.current}/>
             <Grid columns="two" verticalAlign="middle" centered>
               <Grid.Row>
                 <Grid.Column width={2} textAlign="center">
-                  <Icon circular inverted color="red" name="ban" size="big"/>
+                  <Icon circular inverted color="red" name="ban" size="big" onClick={this.buttonClick.bind(this)}/>
                 </Grid.Column>
                 <Grid.Column width={2} textAlgin="center">
-                  <Icon circular inverted color="red" size="big" name="heart"/>
+                  <Icon circular inverted color="red" size="big" name="heart" onClick={this.buttonClick.bind(this)}/>
                 </Grid.Column>
               </Grid.Row>
             </Grid>

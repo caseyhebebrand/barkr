@@ -35,6 +35,8 @@
     "jquery": "^3.2.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
     "semantic-ui-react": "^0.75.1",
     "webpack": "^3.8.1"
   }
